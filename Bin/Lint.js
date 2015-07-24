@@ -3,7 +3,6 @@
 var eslint = require('eslint');
 var clc = require('cli-color');
 var ESLintCLI = eslint.CLIEngine;
-var eslintConfig = require('./../ESLint.json');
 
 function esLintLogger(result) {
     console.log(clc.underline(result.filePath));
