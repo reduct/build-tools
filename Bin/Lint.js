@@ -17,7 +17,6 @@ function esLintLogOne(message) {
     console.log(color(messagePrefix + ' on line ' + message.line + ' column ' + message.column + ':'), message.message);
 }
 
-
 module.exports = function(args) {
     var sourcePath = args[0] || 'Src/';
     var cli = new ESLintCLI({
