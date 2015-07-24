@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/reduct/shared-build/issues"
   },
-  "homepage": "https://github.com/reduct/shared-build#readme"
+  "homepage": "https://github.com/reduct/shared-build#readme",
+  "bin": {
+    "reduct": "Bin/Reduct.js"
+  }
 }
