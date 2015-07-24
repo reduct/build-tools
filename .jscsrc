@@ -1,4 +1,7 @@
 {
   "preset": "airbnb",
-  "esnext": true
+  "esnext": true,
+  "validateIndentation": 4,
+  "maxErrors": 10,
+  "disallowSpacesInFunctionExpression": null
 }
