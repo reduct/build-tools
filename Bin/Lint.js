@@ -21,6 +21,7 @@ function esLintLogOne(message) {
 module.exports = function(args) {
     var sourcePath = args[0] || 'Src/';
     var cli = new ESLintCLI({
+        reset: true,
         // ToDo: Absolute paths shouldn't be used.
         configFile: 'node_modules/shared-build/.eslintrc'
     });
