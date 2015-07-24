@@ -29,6 +29,7 @@
     "reduct": "Bin/Reduct.js"
   },
   "devDependencies": {
+    "buenos-jscs": "^0.1.4",
     "cli-color": "^1.0.0",
     "eslint": "^0.24.1"
   }
