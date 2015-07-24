@@ -34,12 +34,12 @@ ESLintRunner.prototype.logResultForFile = function(result) {
 
     result.messages.forEach(this.logViolations.bind(this));
 };
-ESLintRunner.prototype.logViolations = function(message) {
-    var isFatal = message.fatal;
+ESLintRunner.prototype.logViolations = function(violation) {
+    var isFatal = violation.fatal;
     var color = isFatal ? clc.red : clc.yellow;
     var messagePrefix = isFatal ? 'Error' : 'Warning';
 
-    console.log(color(messagePrefix + ' on line ' + message.line + ' column ' + message.column + ':'), message.message);
+    console.log(color(messagePrefix + ' on line ' + violation.line + ' column ' + violation.column + ':'), violation.message);
 };
 
 module.exports = ESLintRunner;

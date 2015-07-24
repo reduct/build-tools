@@ -9,5 +9,8 @@ module.exports = function(args) {
     var jscsLintInstance = new JSCSRunner(sourcePath);
 
     esLintInstance.lint();
+
+    console.log('\n');
+
     jscsLintInstance.lint();
 };
