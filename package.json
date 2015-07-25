@@ -37,7 +37,7 @@
   "bin": {
     "reduct": "Bin/Reduct.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "babel": "^5.8.5",
     "buenos-jscs": "^0.1.4",
     "cli-color": "^1.0.0",
