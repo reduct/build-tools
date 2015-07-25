@@ -1,14 +1,14 @@
 var eslint = require('eslint');
 var clc = require('cli-color');
 var ESLintCLI = eslint.CLIEngine;
-
+var cwd = process.cwd();
 
 class ESLintRunner {
     constructor(path) {
         this.runner = new ESLintCLI({
             reset: true,
             // ToDo: Absolute paths shouldn't be used.
-            configFile: 'node_modules/shared-build/.eslintrc'
+            configFile: cwd + '/node_modules/shared-build/.eslintrc'
         });
         this.report = this.runner.executeOnFiles([path]);
     }
@@ -36,6 +36,8 @@ class ESLintRunner {
             if(hasESLintErrors) {
                 reject();
             } else {
+                console.log(clc.green('ESLint results are good!'));
+
                 resolve();
             }
         });

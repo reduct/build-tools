@@ -1,5 +1,6 @@
 var jscs = require('buenos-jscs');
 var clc = require('cli-color');
+var cwd = process.cwd();
 
 class JSCSRunner {
     constructor(path) {
@@ -10,7 +11,7 @@ class JSCSRunner {
     lint() {
         this.runner = new jscs({
             src: [this.path],
-            jscsConfig: './node_modules/shared-build/.jscsrc'
+            jscsConfig: cwd + '/node_modules/shared-build/.jscsrc'
         });
 
         console.log(clc.underline('Checking the code style via JSCS...'));
@@ -34,6 +35,8 @@ class JSCSRunner {
                 if(log.failureCount > 0) {
                     reject();
                 } else {
+                    console.log(clc.green('JSCS results are good!'));
+
                     resolve();
                 }
             });
@@ -41,9 +44,11 @@ class JSCSRunner {
     }
 
     logResultForFile(fileName, result) {
-        console.log(clc.underline(fileName));
+        if(result.errorCount) {
+            console.log(clc.underline(fileName));
 
-        result.errors.forEach(this.logViolation.bind(this));
+            result.errors.forEach(this.logViolation.bind(this));
+        }
     }
 
     logViolation(violation) {

@@ -10,7 +10,7 @@ module.exports = () => {
     var jscsLintInstance = new JSCSRunner(sourcePath);
 
     return esLintInstance.lint().then(() => {
-        console.log('\n');
+        console.log('');
 
         return jscsLintInstance.lint();
     }).catch(() => {
