@@ -13,7 +13,7 @@ npm install @reduct/shared-build --save-dev
 *ToDo*
 
 ##### Publish-Coverage
-Publishes your coverage results to codeclimate. (For fruther information, read the integration guide on codeclimate.)
+Publishes your coverage results to codeclimate. (For further information, read the integration guide on codeclimate.)
 Please specify the path to your results-file e.g.:
 
 ```bash
@@ -21,7 +21,7 @@ reduct publish-coverage lcov.info
 ```
 
 ##### Lint
-Lints your specified Source folder(Default is `Src/`) with ESLint and logs all errors/warning to your console.
+Lints your specified source folder (default is `Src/`) with ESLint and logs all errors/warning to your console.
 
 ```bash
 reduct lint
