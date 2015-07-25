@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 
+var babel = require("babel/register");
 var publishCoverage = require('./PublishCoverage.js');
 var lint = require('./Lint.js');
 var userArgs = process.argv.slice(2);

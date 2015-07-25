@@ -2,11 +2,11 @@
 
 var exec = require('child_process').exec;
 
-module.exports = function(args) {
+module.exports = (args) => {
     var filePath = args[0];
 
     if(filePath) {
-        exec('cat ' + filePath + ' | codeclimate', function (err) {
+        exec('cat ' + filePath + ' | codeclimate', (err) => {
             if (err) {
                 throw err;
             }
