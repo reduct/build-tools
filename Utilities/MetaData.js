@@ -11,6 +11,7 @@ function GetMetaData() {
     var cwd = process.cwd();
     var metaData = require(cwd + '/package.json');
     var config = metaData.reduct;
+    var versionArray = metaData.version.split('.');
 
     if(!config) {
         console.log('No reduct config was found in your package.json: ', metaData);
@@ -28,7 +29,11 @@ function GetMetaData() {
 
     return this.data = {
         packageName: metaData.name,
-        version: metaData.version,
+        version: {
+            major: versionArray[0],
+            minor: versionArray[1],
+            patch: versionArray[2]
+        },
         licenseType: metaData.license.type,
         paths: {
             src: config.sourceFolder,

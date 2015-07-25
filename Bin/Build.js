@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-var umd = require('umd');
+var UMDWrapper = require('./../Lib/UMDWrapper.js');
 var babel = require('babel');
 var uglify = require('uglify-files');
 var getFileContents = require('./../Utilities/GetFileContents.js');
@@ -21,19 +21,19 @@ function transpileWithBabel(code) {
 
 function umdify(packageName, code) {
     return new Promise((resolve, reject) => {
-        var umdCode = umd(packageName, code);
+        var umdWrapperInstance = new UMDWrapper(packageName, code, metaData.version);
 
-        if(umdCode) {
+        umdWrapperInstance.getWrappedCode().then((umdCode) => {
             resolve(umdCode);
-        } else {
+        }).catch(() => {
             reject();
-        }
+        });
     });
 }
 
 function addBanner(code) {
-    var versionArray = metaData.version.split('.');
-    var banner = `/* ${metaData.packageName} ${versionArray[0]}.${versionArray[1]}.${versionArray[2]} | @license ${metaData.licenseType} */
+    var version = metaData.version;
+    var banner = `/* ${metaData.packageName} ${version.major}.${version.minor}.${version.patch} | @license ${metaData.licenseType} */
 
 `;
     var banneredCode = banner + code;
