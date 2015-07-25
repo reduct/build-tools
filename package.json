@@ -9,11 +9,21 @@
     "type": "git",
     "url": "git+https://github.com/reduct/build-tools.git"
   },
-  "author": [
+  "author": "reduct",
+  "contributors": [
     {
       "name": "Tyll Weiß",
       "email": "inkdpixels@gmail.com",
       "url": "https://github.com/Inkdpixels/"
+    },
+    {
+      "name": "André König",
+      "email": "andre.koenig@posteo.de",
+      "url": "https://github.com/akoenig/"
+    },
+    {
+      "name": "Wilhelm Behncke",
+      "url": "https://github.com/grebaldi/"
     }
   ],
   "license": {
