@@ -5,8 +5,7 @@ var babel = require('babel');
 var uglify = require('uglify-files');
 var getFileContents = require('./../Utilities/GetFileContents.js');
 var writeFile = require('./../Utilities/WriteFile.js');
-var cwd = process.cwd();
-var metaData = require(cwd + '/package.json');
+var metaData = require('./../Utilities/MetaData.js');
 
 function transpileWithBabel(code) {
     return new Promise((resolve, reject) => {
@@ -34,7 +33,7 @@ function umdify(packageName, code) {
 
 function addBanner(code) {
     var versionArray = metaData.version.split('.');
-    var banner = `/* ${metaData.name} ${versionArray[0]}.${versionArray[1]}.${versionArray[2]} | @license ${metaData.license.type} */
+    var banner = `/* ${metaData.packageName} ${versionArray[0]}.${versionArray[1]}.${versionArray[2]} | @license ${metaData.licenseType} */
 
 `;
     var banneredCode = banner + code;
@@ -57,14 +56,14 @@ function uglifyFile(filePath) {
     });
 }
 
-module.exports = (args) => {
-    var packageName = args[0] || 'default';
-    var srcPath = args[1] || 'Src/';
-    var distPath = args[2] || 'Dist/';
-    var fileName = args[3] || 'MyFile';
+module.exports = () => {
+    var globalPackageName = metaData.globalPackageName;
+    var srcPath = metaData.paths.src;
+    var distPath = metaData.paths.dist;
+    var fileName = metaData.entryFile;
 
     getFileContents(srcPath + fileName).then((code) => {
-        return umdify(packageName, code);
+        return umdify(globalPackageName, code);
     }).then((code) => {
         return transpileWithBabel(code);
     }).then((code) => {

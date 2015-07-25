@@ -2,9 +2,10 @@
 
 var ESLintRunner = require('./../Lib/ESLintRunner.js');
 var JSCSRunner = require('./../Lib/JSCSRunner.js');
+var metaData = require('./../Utilities/MetaData.js');
 
-module.exports = (args) => {
-    var sourcePath = args[0] || 'Src/';
+module.exports = () => {
+    var sourcePath = metaData.paths.src;
     var esLintInstance = new ESLintRunner(sourcePath);
     var jscsLintInstance = new JSCSRunner(sourcePath);
 

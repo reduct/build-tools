@@ -1,9 +1,10 @@
 #! /usr/bin/env node
 
 var exec = require('child_process').exec;
+var metaData = require('./../Utilities/MetaData.js');
 
-module.exports = (args) => {
-    var filePath = args[0];
+module.exports = () => {
+    var filePath = metaData.coverageReportFile;
 
     return new Promise((resolve, reject) => {
         if(filePath) {

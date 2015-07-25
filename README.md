@@ -8,20 +8,40 @@
 npm install @reduct/shared-build --save-dev
 ```
 
+## Configuration
+After installing the package properly, you can add your configuration to your package.json. For example:
+```javascript
+{
+  "name": "@reduct/component",
+  "version": "1.0.6",
+  "license": {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/mit-license.php"
+  },
+  "reduct": {
+    "sourceFolder": "Src/",
+    "distributionFolder": "Dist/",
+    "entryFile": "Component.js",
+    "globalPackageName": "reductComponent",
+    "coverageReportFile": "lcov.info"
+  }
+}
+```
+
+
 ## Commands
 ##### Default
 *ToDo*
 
 ##### Publish-Coverage
 Publishes your coverage results to codeclimate. (For further information, read the integration guide on codeclimate.)
-Please specify the path to your results-file e.g.:
 
 ```bash
-reduct publish-coverage lcov.info
+reduct publish-coverage
 ```
 
 ##### Lint
-Lints your specified source folder (default is `Src/`) with ESLint and logs all errors/warning to your console.
+Lints your configured source folder with ESLint and logs all errors/warning to your console.
 
 ```bash
 reduct lint
