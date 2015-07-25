@@ -24,6 +24,9 @@ switch(taskType) {
         break;
 
     default:
-        // ToDo
+        lint().then(function() {
+            return build();
+        });
+
         break;
 }

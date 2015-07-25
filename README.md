@@ -31,7 +31,7 @@ After installing the package properly, you can add your configuration to your pa
 
 ## Commands
 ##### Default
-*ToDo*
+Runs the following tasks synchronously `reduct lint`, `reduct build`.
 
 ##### Publish-Coverage
 Publishes your coverage results to codeclimate. (For further information, read the integration guide on codeclimate.)
