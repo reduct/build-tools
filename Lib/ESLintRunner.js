@@ -8,7 +8,7 @@ class ESLintRunner {
         this.runner = new ESLintCLI({
             reset: true,
             // ToDo: Absolute paths shouldn't be used.
-            configFile: cwd + '/node_modules/shared-build/.eslintrc'
+            configFile: cwd + '/node_modules/@reduct/build-tools/.eslintrc'
         });
         this.report = this.runner.executeOnFiles([path]);
     }
