@@ -1,11 +1,11 @@
-# @reduct/shared-build
+# @reduct/build-tools
 
 > Shared configurations and build setup for all reduct repositories.
 
 ## Installation
 
 ```shell
-npm install @reduct/shared-build --save-dev
+npm install @reduct/build-tools --save-dev
 ```
 
 ## Configuration

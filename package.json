@@ -1,10 +1,9 @@
 {
-  "name": "shared-build",
-  "version": "1.0.0",
+  "name": "@reduct/build-tools",
+  "version": "0.1.0",
   "description": "Shared configurations and build setup for all reduct repositories.",
-  "main": "PublishCoverage.js",
   "scripts": {
-    "test": "node PublishCoverage.js"
+    "test": "reduct"
   },
   "repository": {
     "type": "git",
