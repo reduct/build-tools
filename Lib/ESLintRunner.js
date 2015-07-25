@@ -18,19 +18,27 @@ class ESLintRunner {
         var hasESLintWarnings = report.warningCount > 0;
         var hasESLintErrors = report.errorCount > 0;
 
-        console.log(clc.underline('Linting all files via ESLint...'));
+        return new Promise((resolve, reject) => {
+            console.log(clc.underline('Linting all files via ESLint...'));
 
-        if(hasESLintErrors) {
-            console.log(clc.red('ESLint has found one or more errors:\n'));
-        }
+            if(hasESLintErrors) {
+                console.log(clc.red('ESLint has found one or more errors:\n'));
+            }
 
-        if(hasESLintWarnings) {
-            console.log(clc.yellow('ESLint has found one or more warnings:\n'));
-        }
+            if(hasESLintWarnings) {
+                console.log(clc.yellow('ESLint has found one or more warnings:\n'));
+            }
 
-        if(hasESLintErrors || hasESLintWarnings) {
-            report.results.forEach(this.logResultForFile.bind(this));
-        }
+            if(hasESLintErrors || hasESLintWarnings) {
+                report.results.forEach(this.logResultForFile.bind(this));
+            }
+
+            if(hasESLintErrors) {
+                reject();
+            } else {
+                resolve();
+            }
+        });
     }
 
     logResultForFile(result) {

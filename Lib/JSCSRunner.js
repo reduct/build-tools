@@ -15,20 +15,28 @@ class JSCSRunner {
 
         console.log(clc.underline('Checking the code style via JSCS...'));
 
-        this.runner.promise.then((log) => {
-            var errors = log.files;
+        return new Promise((resolve, reject) => {
+            this.runner.promise.then((log) => {
+                var errors = log.files;
 
-            if(log.failureCount > 0) {
-                console.log(clc.red('JSCS has found one or more errors:\n'));
-            }
-
-            for (var fileName in errors) {
-                if (errors.hasOwnProperty(fileName)) {
-                    var result = errors[fileName];
-
-                    this.logResultForFile(fileName, result);
+                if(log.failureCount > 0) {
+                    console.log(clc.red('JSCS has found one or more errors:\n'));
                 }
-            }
+
+                for (var fileName in errors) {
+                    if (errors.hasOwnProperty(fileName)) {
+                        var result = errors[fileName];
+
+                        this.logResultForFile(fileName, result);
+                    }
+                }
+
+                if(log.failureCount > 0) {
+                    reject();
+                } else {
+                    resolve();
+                }
+            });
         });
     }
 

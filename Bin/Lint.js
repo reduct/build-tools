@@ -8,9 +8,11 @@ module.exports = (args) => {
     var esLintInstance = new ESLintRunner(sourcePath);
     var jscsLintInstance = new JSCSRunner(sourcePath);
 
-    esLintInstance.lint();
+    return esLintInstance.lint().then(() => {
+        console.log('\n');
 
-    console.log('\n');
-
-    jscsLintInstance.lint();
+        return jscsLintInstance.lint();
+    }).catch(() => {
+        process.exit(1);
+    });
 };
