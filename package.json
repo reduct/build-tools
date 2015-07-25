@@ -32,6 +32,8 @@
     "babel": "^5.8.5",
     "buenos-jscs": "^0.1.4",
     "cli-color": "^1.0.0",
-    "eslint": "^0.24.1"
+    "eslint": "^0.24.1",
+    "uglify-files": "^0.1.1",
+    "umd": "^3.0.1"
   }
 }

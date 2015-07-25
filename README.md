@@ -27,6 +27,14 @@ Lints your specified Source folder(Default is `Src/`) with ESLint and logs all e
 reduct lint
 ```
 
+##### Build
+Transpiles your code with Babel, adds a UMD wrapper to the code, adds a banner comment to your file head containing
+meta-data from your `package.json` as well as creates a uglified version of the final file.
+
+```bash
+reduct build
+```
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
