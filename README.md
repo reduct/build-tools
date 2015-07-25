@@ -48,7 +48,7 @@ reduct lint
 ```
 
 ##### Build
-Transpiles your code with Babel, adds a UMD wrapper to the code, adds a banner comment to your file head containing
+Transpiles your code with Babel, adds a UMD wrapper to the code and a banner comment to your file head containing
 meta-data from your `package.json` as well as creates a uglified version of the final file.
 
 ```bash
