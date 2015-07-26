@@ -1,4 +1,5 @@
 # @reduct/build-tools
+[![Build Status](https://travis-ci.org/reduct/build-tools.svg)](https://travis-ci.org/reduct/build-tools) [![Dependency Status](https://david-dm.org/reduct/build-tools.svg)](https://david-dm.org/reduct/build-tools) [![devDependency Status](https://david-dm.org/reduct/build-tools/dev-status.svg)](https://david-dm.org/reduct/build-tools#info=devDependencies)
 
 > Shared configurations and build setup for all reduct repositories.
 
