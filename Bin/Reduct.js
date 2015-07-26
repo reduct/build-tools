@@ -8,8 +8,12 @@ var test = require('./Test.js');
 var userArgs = process.argv.slice(2);
 var taskType = userArgs[0];
 
+// Define a custom process title for additional behavior in tests etc.
+process.title = 'reduct';
+
 function onError(err) {
-    console.log(err)
+    console.log(err);
+
     process.exit(1);
 }
 

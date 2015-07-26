@@ -62,7 +62,7 @@ module.exports = () => {
     var distPath = metaData.paths.dist;
     var fileName = metaData.entryFile;
 
-    getFileContents(srcPath + fileName).then((code) => {
+    return getFileContents(srcPath + fileName).then((code) => {
         return umdify(globalPackageName, code);
     }).then((code) => {
         return transpileWithBabel(code);
@@ -75,5 +75,5 @@ module.exports = () => {
     }).catch((err) => {
         console.log(err);
         process.exit(1);
-    })
+    });
 };
