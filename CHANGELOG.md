@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.2.1
+**Implemented enhancements:**
+- Implemented a custom process title (`reduct`) for custom behavior in tests.
+- Added a catch statement to each task call for improved error logs.
+
 ## 0.2.0
 **Implemented enhancements:**
 - Added a `mocha` task which runs all test specs in your package which match `.spec.js` in their filename via mocha.
