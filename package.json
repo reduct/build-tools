@@ -1,6 +1,6 @@
 {
   "name": "@reduct/build-tools",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
     "test": "reduct"
