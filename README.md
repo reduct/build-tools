@@ -31,7 +31,7 @@ After installing the package properly, you can add your configuration to your pa
 
 ## Commands
 ##### Default
-Runs the following tasks synchronously `reduct lint`, `reduct build`.
+Runs the `reduct lint`, `reduct mocha`, `reduct build` synchronously.
 
 ##### Publish-Coverage
 Publishes your coverage results to codeclimate. (For further information, read the integration guide on codeclimate.)
@@ -45,6 +45,20 @@ Lints your configured source folder with ESLint and logs all errors/warning to y
 
 ```bash
 reduct lint
+```
+
+##### Mocha
+Runs all test specs in your package which match `.spec.js` in their filename via mocha.
+
+```bash
+reduct mocha
+```
+
+##### Test
+Runs `reduct lint` and if successful `reduct mocha`.
+
+```bash
+reduct test
 ```
 
 ##### Build
