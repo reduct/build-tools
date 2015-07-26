@@ -6,12 +6,7 @@ var getFiles = require('./../Utilities/GetFiles.js');
 var cwd = process.cwd();
 
 module.exports = () => {
-    // TEST=true mocha --compilers js:babel/register ./Tests/*.spec.js
-    var mochaInstance = new Mocha({
-        globals: {
-            'TEST': true
-        }
-    });
+    var mochaInstance = new Mocha();
 
     getFiles(cwd, '.spec.js', (fileName) => {
         mochaInstance.addFile(fileName);
