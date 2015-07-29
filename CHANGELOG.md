@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0
+**Implemented enhancements:**
+- Adjusted some JSCS rules.
+- Integrated Travis CI.
+
+**Fixed issues:**
+- Fixed the babel/register issue (The binaries are now transpiled in the postinstall script via babel).
+
 ## 0.2.1
 **Implemented enhancements:**
 - Implemented a custom process title (`reduct`) for custom behavior in tests.
