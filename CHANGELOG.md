@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.4
+**Fixed issues:**
+- Log all errors from the mocha instance and exit the process if needed.
+
 ## 1.0.3
 **Fixed issues:**
 - Implemented the babel/polyfill hook for node versions without promises support.
