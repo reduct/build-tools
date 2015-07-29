@@ -1,0 +1,79 @@
+#! /usr/bin/env node
+'use strict';
+
+var UMDWrapper = require('./../Lib/UMDWrapper.js');
+var babel = require('babel');
+var uglify = require('uglify-files');
+var getFileContents = require('./../Utilities/GetFileContents.js');
+var writeFile = require('./../Utilities/WriteFile.js');
+var metaData = require('./../Utilities/MetaData.js');
+
+function transpileWithBabel(code) {
+    return new Promise(function (resolve, reject) {
+        var result = babel.transform(code);
+
+        if (result.code) {
+            resolve(result.code);
+        } else {
+            reject();
+        }
+    });
+}
+
+function umdify(packageName, code) {
+    return new Promise(function (resolve, reject) {
+        var umdWrapperInstance = new UMDWrapper(packageName, code, metaData.version);
+
+        umdWrapperInstance.getWrappedCode().then(function (umdCode) {
+            resolve(umdCode);
+        })['catch'](function () {
+            reject();
+        });
+    });
+}
+
+function addBanner(code) {
+    var version = metaData.version;
+    var banner = '/* ' + metaData.packageName + ' ' + version.major + '.' + version.minor + '.' + version.patch + ' | @license ' + metaData.licenseType + ' */\n\n';
+    var banneredCode = banner + code;
+
+    return Promise.resolve(banneredCode);
+}
+
+function uglifyFile(filePath) {
+    var sourceFile = filePath;
+    var targetFile = filePath.replace('.js', '.min.js');
+
+    return new Promise(function (resolve, reject) {
+        uglify(sourceFile, targetFile, function (err) {
+            if (err) {
+                reject(err);
+            }
+
+            resolve();
+        });
+    });
+}
+
+module.exports = function () {
+    var globalPackageName = metaData.globalPackageName;
+    var srcPath = metaData.paths.src;
+    var distPath = metaData.paths.dist;
+    var fileName = metaData.entryFile;
+
+    return getFileContents(srcPath + fileName).then(function (code) {
+        return umdify(globalPackageName, code);
+    }).then(function (code) {
+        return transpileWithBabel(code);
+    }).then(function (code) {
+        return addBanner(code);
+    }).then(function (code) {
+        return writeFile(distPath + fileName, code);
+    }).then(function (filePath) {
+        return uglifyFile(filePath);
+    })['catch'](function (err) {
+        console.log(err);
+
+        throw new Error('@reduct/build-tools: Something went wrong while running the build task.');
+    });
+};

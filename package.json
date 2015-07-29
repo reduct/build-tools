@@ -6,8 +6,7 @@
     "test": "npm run jscs && npm run eslint && npm run babel",
     "jscs": "jscs Src/",
     "eslint": "eslint Src/",
-    "babel": "babel Src --out-dir Dist",
-    "preinstall": "npm run babel"
+    "babel": "babel Src --out-dir Dist"
   },
   "repository": {
     "type": "git",
