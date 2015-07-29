@@ -18,15 +18,15 @@ class JSCSRunner {
 
         return new Promise((resolve, reject) => {
             this.runner.promise.then((log) => {
-                var errors = log.files;
+                let errors = log.files;
 
                 if (log.failureCount > 0) {
                     console.log(clc.red('JSCS has found one or more errors:\n'));
                 }
 
-                for (var fileName in errors) {
+                for (let fileName in errors) {
                     if (errors.hasOwnProperty(fileName)) {
-                        var result = errors[fileName];
+                        let result = errors[fileName];
 
                         this.logResultForFile(fileName, result);
                     }
@@ -52,7 +52,8 @@ class JSCSRunner {
     }
 
     logViolation(violation) {
-        console.log(clc.red('Style violation on line ' + violation.line + ' column ' + violation.column + ':'), violation.rule + ' ' + violation.message);
+        let prelude = clc.red('Style violation on line ' + violation.line + ' column ' + violation.column + ':');
+        console.log(prelude, violation.rule + ' ' + violation.message);
     }
 }
 

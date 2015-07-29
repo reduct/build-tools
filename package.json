@@ -4,7 +4,8 @@
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
     "test": "npm run jscs",
-    "jscs": "jscs Bin/ Lib/ Utilities/"
+    "jscs": "jscs Bin/ Lib/ Utilities/",
+    "eslint": "eslint Bin/ Lib/ Utilities/"
   },
   "repository": {
     "type": "git",

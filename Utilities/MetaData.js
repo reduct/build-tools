@@ -16,18 +16,18 @@ function GetMetaData() {
     if (!config) {
         console.log('No reduct config was found in your package.json: ', metaData);
 
-        process.exit(1);
+        throw new Error('@reduct/build-tools: Something went wrong while getting the metaData - Details are posted above.');
     }
 
     requiredKeyValuePairs.forEach((requiredkey) => {
         if (!config[requiredkey]) {
             console.log(`Please specify a reduct.${requiredkey} value in your package.json: `, metaData);
 
-            process.exit(1);
+            throw new Error('@reduct/build-tools: Something went wrong while getting the metaData - Details are posted above.');
         }
     });
 
-    return this.data = {
+    this.data = {
         packageName: metaData.name,
         version: {
             major: versionArray[0],
@@ -43,8 +43,10 @@ function GetMetaData() {
         globalPackageName: config.globalPackageName,
         coverageReportFile: config.coverageReportFile
     };
+
+    return this.data;
 }
 
-module.exports = (function() {
+module.exports = (function exportAPI() {
     return singleton || (singleton = new GetMetaData());
 }());

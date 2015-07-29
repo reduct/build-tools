@@ -14,7 +14,7 @@ process.title = 'reduct';
 function onError(err) {
     console.log(err);
 
-    process.exit(1);
+    throw new Error('@reduct/build-tools: Something went wrong - Details are posted above.');
 }
 
 switch (taskType) {
@@ -39,16 +39,16 @@ switch (taskType) {
         break;
 
     case 'test':
-        lint().then(function() {
+        lint().then(function then() {
             return test();
         }).catch(onError);
 
         break;
 
     default:
-        lint().then(function() {
+        lint().then(function then() {
             return test();
-        }).then(function() {
+        }).then(function then() {
             return build();
         }).catch(onError);
 

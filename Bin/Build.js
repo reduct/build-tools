@@ -46,7 +46,7 @@ function uglifyFile(filePath) {
     var targetFile = filePath.replace('.js', '.min.js');
 
     return new Promise((resolve, reject) => {
-        uglify(sourceFile, targetFile, function(err, result) {
+        uglify(sourceFile, targetFile, (err) => {
             if (err) {
                 reject(err);
             }
@@ -74,6 +74,7 @@ module.exports = () => {
         return uglifyFile(filePath);
     }).catch((err) => {
         console.log(err);
-        process.exit(1);
+
+        throw new Error('@reduct/build-tools: Something went wrong while running the build task.');
     });
 };

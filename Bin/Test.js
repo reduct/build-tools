@@ -1,7 +1,6 @@
 #! /usr/bin/env node
 
 var Mocha = require('mocha');
-var metaData = require('./../Utilities/MetaData.js');
 var getFiles = require('./../Utilities/GetFiles.js');
 var cwd = process.cwd();
 

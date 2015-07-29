@@ -14,6 +14,6 @@ module.exports = () => {
 
         return jscsLintInstance.lint();
     }).catch(() => {
-        process.exit(1);
+        throw new Error('@reduct/build-tools: Something went wrong while running the lint task.');
     });
 };
