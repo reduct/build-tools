@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.3
+**Fixed issues:**
+- Implemented the babel/polyfill hook for node versions without promises support.
+
 ## 1.0.2
 **Fixed issues:**
 - Moved away from the `preinstall` npm script and fixed the installing of the `@reduct/build-tools`.
