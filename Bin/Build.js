@@ -7,7 +7,7 @@ var getFileContents = require('./../Utilities/GetFileContents.js');
 var writeFile = require('./../Utilities/WriteFile.js');
 var metaData = require('./../Utilities/MetaData.js');
 
-function transpileWithBabel(code) {
+function transpileWithBabel (code) {
     return new Promise((resolve, reject) => {
         var result = babel.transform(code);
 
@@ -19,7 +19,7 @@ function transpileWithBabel(code) {
     });
 }
 
-function umdify(packageName, code) {
+function umdify (packageName, code) {
     return new Promise((resolve, reject) => {
         var umdWrapperInstance = new UMDWrapper(packageName, code, metaData.version);
 
@@ -31,7 +31,7 @@ function umdify(packageName, code) {
     });
 }
 
-function addBanner(code) {
+function addBanner (code) {
     var version = metaData.version;
     var banner = `/* ${metaData.packageName} ${version.major}.${version.minor}.${version.patch} | @license ${metaData.licenseType} */
 
@@ -41,7 +41,7 @@ function addBanner(code) {
     return Promise.resolve(banneredCode);
 }
 
-function uglifyFile(filePath) {
+function uglifyFile (filePath) {
     var sourceFile = filePath;
     var targetFile = filePath.replace('.js', '.min.js');
 

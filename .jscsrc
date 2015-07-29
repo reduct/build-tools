@@ -4,6 +4,14 @@
   "validateIndentation": 4,
   "maxErrors": 10,
   "disallowSpacesInFunctionExpression": null,
+  "disallowSpacesInNamedFunctionExpression": null,
+  "disallowSpacesInFunctionExpression": null,
+  "disallowSpacesInAnonymousFunctionExpression": null,
+  "disallowSpacesInFunctionDeclaration": null,
+  "requireSpacesInFunctionDeclaration": {
+    "beforeOpeningRoundBrace": true,
+    "beforeOpeningCurlyBrace": true
+  },
   "requireTrailingComma": null,
   "requirePaddingNewLinesAfterBlocks": {
     "allExcept": ["inCallExpressions"]

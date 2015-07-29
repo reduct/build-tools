@@ -7,7 +7,7 @@ var requiredKeyValuePairs = [
     'coverageReportFile'
 ];
 
-function GetMetaData() {
+function GetMetaData () {
     var cwd = process.cwd();
     var metaData = require(cwd + '/package.json');
     var config = metaData.reduct;
@@ -47,6 +47,6 @@ function GetMetaData() {
     return this.data;
 }
 
-module.exports = (function exportAPI() {
+module.exports = (function exportAPI () {
     return singleton || (singleton = new GetMetaData());
 }());

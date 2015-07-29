@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-function getFileContents(filePath, contents) {
+function getFileContents (filePath, contents) {
     return new Promise((resolve, reject) => {
         fs.writeFile(filePath, contents, (err) => {
             if (err) {

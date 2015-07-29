@@ -11,7 +11,7 @@ var taskType = userArgs[0];
 // Define a custom process title for additional behavior in tests etc.
 process.title = 'reduct';
 
-function onError(err) {
+function onError (err) {
     console.log(err);
 
     throw new Error('@reduct/build-tools: Something went wrong - Details are posted above.');
