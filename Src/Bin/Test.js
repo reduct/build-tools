@@ -14,7 +14,7 @@ module.exports = () => {
     return new Promise((resolve, reject) => {
         mochaInstance.run((failures) => {
             if (failures) {
-                reject();
+                reject(failures);
             } else {
                 resolve();
             }
