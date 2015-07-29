@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-var babel = require('babel/register');
 var publishCoverage = require('./PublishCoverage.js');
 var build = require('./Build.js');
 var lint = require('./Lint.js');
@@ -39,16 +38,16 @@ switch (taskType) {
         break;
 
     case 'test':
-        lint().then(function then() {
+        lint().then(() => {
             return test();
         }).catch(onError);
 
         break;
 
     default:
-        lint().then(function then() {
+        lint().then(() => {
             return test();
-        }).then(function then() {
+        }).then(() => {
             return build();
         }).catch(onError);
 

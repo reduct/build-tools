@@ -3,9 +3,11 @@
   "version": "0.2.1",
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
-    "test": "npm run jscs",
-    "jscs": "jscs Bin/ Lib/ Utilities/",
-    "eslint": "eslint Bin/ Lib/ Utilities/"
+    "test": "npm run jscs && npm run eslint && npm run babel",
+    "jscs": "jscs Src/",
+    "eslint": "eslint Src/",
+    "babel": "babel Src --out-dir Dist",
+    "postinstall": "npm run babel"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,7 @@
   },
   "homepage": "https://github.com/reduct/build-tools#readme",
   "bin": {
-    "reduct": "Bin/Reduct.js"
+    "reduct": "Dist/Bin/Reduct.js"
   },
   "dependencies": {
     "babel": "^5.8.5",
