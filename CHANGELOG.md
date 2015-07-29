@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.2
+**Fixed issues:**
+- Moved away from the `preinstall` npm script and fixed the installing of the `@reduct/build-tools`.
+
 ## 1.0.1
 **Fixed issues:**
 - Moved the buid `postinstall` to the `preinstall` script since npm requires the binary to be present before running `postinstall`.

@@ -1,6 +1,6 @@
 {
   "name": "@reduct/build-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
     "test": "npm run jscs && npm run eslint && npm run babel",
