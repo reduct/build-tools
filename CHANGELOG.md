@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.1
+**Fixed issues:**
+- Moved the buid `postinstall` to the `preinstall` script since npm requires the binary to be present before running `postinstall`.
+
 ## 1.0.0
 **Implemented enhancements:**
 - Adjusted some JSCS rules.
