@@ -11,7 +11,7 @@ function transpileWithBabel(code) {
     return new Promise((resolve, reject) => {
         var result = babel.transform(code);
 
-        if(result.code) {
+        if (result.code) {
             resolve(result.code);
         } else {
             reject();
@@ -47,7 +47,7 @@ function uglifyFile(filePath) {
 
     return new Promise((resolve, reject) => {
         uglify(sourceFile, targetFile, function(err, result) {
-            if(err) {
+            if (err) {
                 reject(err);
             }
 

@@ -7,6 +7,7 @@ class ESLintRunner {
     constructor(path) {
         this.runner = new ESLintCLI({
             reset: true,
+
             // ToDo: Absolute paths shouldn't be used.
             configFile: cwd + '/node_modules/@reduct/build-tools/.eslintrc'
         });
@@ -21,19 +22,19 @@ class ESLintRunner {
         return new Promise((resolve, reject) => {
             console.log(clc.underline('Linting all files via ESLint...'));
 
-            if(hasESLintErrors) {
+            if (hasESLintErrors) {
                 console.log(clc.red('ESLint has found one or more errors:\n'));
             }
 
-            if(hasESLintWarnings) {
+            if (hasESLintWarnings) {
                 console.log(clc.yellow('ESLint has found one or more warnings:\n'));
             }
 
-            if(hasESLintErrors || hasESLintWarnings) {
+            if (hasESLintErrors || hasESLintWarnings) {
                 report.results.forEach(this.logResultForFile.bind(this));
             }
 
-            if(hasESLintErrors) {
+            if (hasESLintErrors) {
                 reject();
             } else {
                 console.log(clc.green('ESLint results are good!'));

@@ -14,11 +14,11 @@ module.exports = () => {
 
     return new Promise((resolve, reject) => {
         mochaInstance.run((failures) => {
-            if(failures) {
+            if (failures) {
                 reject();
             } else {
                 resolve();
             }
         });
-    })
+    });
 };

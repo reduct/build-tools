@@ -1,4 +1,4 @@
-var jscs = require('buenos-jscs');
+var JSCS = require('buenos-jscs');
 var clc = require('cli-color');
 var cwd = process.cwd();
 
@@ -9,7 +9,7 @@ class JSCSRunner {
     }
 
     lint() {
-        this.runner = new jscs({
+        this.runner = new JSCS({
             src: [this.path],
             jscsConfig: cwd + '/node_modules/@reduct/build-tools/.jscsrc'
         });
@@ -20,7 +20,7 @@ class JSCSRunner {
             this.runner.promise.then((log) => {
                 var errors = log.files;
 
-                if(log.failureCount > 0) {
+                if (log.failureCount > 0) {
                     console.log(clc.red('JSCS has found one or more errors:\n'));
                 }
 
@@ -32,7 +32,7 @@ class JSCSRunner {
                     }
                 }
 
-                if(log.failureCount > 0) {
+                if (log.failureCount > 0) {
                     reject();
                 } else {
                     console.log(clc.green('JSCS results are good!'));
@@ -44,7 +44,7 @@ class JSCSRunner {
     }
 
     logResultForFile(fileName, result) {
-        if(result.errorCount) {
+        if (result.errorCount) {
             console.log(clc.underline(fileName));
 
             result.errors.forEach(this.logViolation.bind(this));

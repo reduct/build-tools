@@ -7,7 +7,7 @@ module.exports = () => {
     var filePath = metaData.coverageReportFile;
 
     return new Promise((resolve, reject) => {
-        if(filePath) {
+        if (filePath) {
             exec('cat ' + filePath + ' | codeclimate', (err) => {
                 if (err) {
                     throw err;

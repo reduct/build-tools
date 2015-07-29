@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-var babel = require("babel/register");
+var babel = require('babel/register');
 var publishCoverage = require('./PublishCoverage.js');
 var build = require('./Build.js');
 var lint = require('./Lint.js');
@@ -17,7 +17,7 @@ function onError(err) {
     process.exit(1);
 }
 
-switch(taskType) {
+switch (taskType) {
     case 'lint':
         lint().catch(onError);
 

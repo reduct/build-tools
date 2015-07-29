@@ -3,7 +3,8 @@
   "version": "0.2.1",
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
-    "test": "reduct"
+    "test": "npm run jscs",
+    "jscs": "jscs Bin/ Lib/ Utilities/"
   },
   "repository": {
     "type": "git",
@@ -44,5 +45,8 @@
     "eslint": "^0.24.1",
     "mocha": "^2.2.5",
     "uglify-files": "^0.1.1"
+  },
+  "devDependencies": {
+    "jscs": "^2.0.0"
   }
 }

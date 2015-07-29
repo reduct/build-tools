@@ -3,5 +3,9 @@
   "esnext": true,
   "validateIndentation": 4,
   "maxErrors": 10,
-  "disallowSpacesInFunctionExpression": null
+  "disallowSpacesInFunctionExpression": null,
+  "requireTrailingComma": null,
+  "requirePaddingNewLinesAfterBlocks": {
+    "allExcept": ["inCallExpressions"]
+  }
 }

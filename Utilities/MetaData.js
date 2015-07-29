@@ -13,14 +13,14 @@ function GetMetaData() {
     var config = metaData.reduct;
     var versionArray = metaData.version.split('.');
 
-    if(!config) {
+    if (!config) {
         console.log('No reduct config was found in your package.json: ', metaData);
 
         process.exit(1);
     }
 
     requiredKeyValuePairs.forEach((requiredkey) => {
-        if(!config[requiredkey]) {
+        if (!config[requiredkey]) {
             console.log(`Please specify a reduct.${requiredkey} value in your package.json: `, metaData);
 
             process.exit(1);

@@ -11,7 +11,7 @@ class UMDWrapper {
         var versionObject = this.versionObject;
 
         return new Promise((resolve, reject) => {
-            if(!versionObject || !factoryFunction || !versionObject) {
+            if (!versionObject || !factoryFunction || !versionObject) {
                 reject();
             } else {
                 resolve(`
