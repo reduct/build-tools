@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+require('babel/polyfill');
+
 var publishCoverage = require('./PublishCoverage.js');
 var build = require('./Build.js');
 var lint = require('./Lint.js');
