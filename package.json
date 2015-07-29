@@ -7,7 +7,7 @@
     "jscs": "jscs Src/",
     "eslint": "eslint Src/",
     "babel": "babel Src --out-dir Dist",
-    "postinstall": "npm run babel"
+    "preinstall": "npm run babel"
   },
   "repository": {
     "type": "git",
