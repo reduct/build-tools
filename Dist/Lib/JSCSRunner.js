@@ -47,10 +47,12 @@ var JSCSRunner = (function () {
                     if (log.failureCount > 0) {
                         reject();
                     } else {
-                        console.log(clc.green('JSCS results are good!'));
+                        console.log(clc.green('\nJSCS results are good!\n'));
 
                         resolve();
                     }
+
+                    console.log('');
                 });
             });
         }

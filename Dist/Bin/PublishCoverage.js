@@ -2,6 +2,7 @@
 'use strict';
 
 var exec = require('child_process').exec;
+var clc = require('cli-color');
 var metaData = require('./../Utilities/MetaData.js');
 
 module.exports = function () {
@@ -17,7 +18,7 @@ module.exports = function () {
                 resolve();
             });
         } else {
-            console.info('Please specify an coverage file to publish as an argument while running "reduct publish-coverage".');
+            console.log(clc.yellow('Please specify a valid path to a coverage file in your package.json.'));
 
             reject();
         }

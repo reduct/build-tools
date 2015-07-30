@@ -49,7 +49,7 @@ var ESLintRunner = (function () {
                 if (hasESLintErrors) {
                     reject();
                 } else {
-                    console.log(clc.green('ESLint results are good!'));
+                    console.log(clc.green('\nESLint results are good!\n'));
 
                     resolve();
                 }

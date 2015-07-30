@@ -1,8 +1,9 @@
 #! /usr/bin/env node
 
-var UMDWrapper = require('./../Lib/UMDWrapper.js');
 var babel = require('babel');
 var uglify = require('uglify-files');
+var clc = require('cli-color');
+var UMDWrapper = require('./../Lib/UMDWrapper.js');
 var getFileContents = require('./../Utilities/GetFileContents.js');
 var writeFile = require('./../Utilities/WriteFile.js');
 var metaData = require('./../Utilities/MetaData.js');
@@ -62,16 +63,28 @@ module.exports = () => {
     var distPath = metaData.paths.dist;
     var fileName = metaData.entryFile;
 
+    console.log(clc.underline('Building the source files...'));
+
     return getFileContents(srcPath + fileName).then((code) => {
+        console.log('Wrapping the UMD IIFE around the source file...');
+
         return umdify(globalPackageName, code);
     }).then((code) => {
+        console.log('Transpiling the source code with babel...');
+
         return transpileWithBabel(code);
     }).then((code) => {
+        console.log('Adding the meta data file banner with...');
+
         return addBanner(code);
     }).then((code) => {
         return writeFile(distPath + fileName, code);
     }).then((filePath) => {
+        console.log('Creating a minfied version of the final build...');
+
         return uglifyFile(filePath);
+    }).then(() => {
+        console.log(clc.green('\nSuccessfully completed the build task.\n'));
     }).catch((err) => {
         console.log(err);
 
