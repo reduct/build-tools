@@ -11,7 +11,8 @@ class JSCSRunner {
     lint() {
         this.runner = new JSCS({
             src: [this.path],
-            jscsConfig: cwd + '/node_modules/@reduct/build-tools/.jscsrc'
+            jscsConfig: cwd + '/node_modules/@reduct/build-tools/.jscsrc',
+            reporters: null
         });
 
         console.log(clc.underline('Checking the code style via JSCS...'));
