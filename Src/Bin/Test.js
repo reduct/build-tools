@@ -8,7 +8,9 @@ module.exports = () => {
     var mochaInstance = new Mocha();
 
     getFiles(cwd, '.spec.js', (fileName) => {
-        mochaInstance.addFile(fileName);
+        if (fileName.indexOf('node_modules') === -1) {
+            mochaInstance.addFile(fileName);
+        }
     });
 
     return new Promise((resolve, reject) => {
