@@ -23,7 +23,8 @@ var JSCSRunner = (function () {
 
             this.runner = new JSCS({
                 src: [this.path],
-                jscsConfig: cwd + '/node_modules/@reduct/build-tools/.jscsrc'
+                jscsConfig: cwd + '/node_modules/@reduct/build-tools/.jscsrc',
+                reporters: null
             });
 
             console.log(clc.underline('Checking the code style via JSCS...'));
@@ -47,10 +48,12 @@ var JSCSRunner = (function () {
                     if (log.failureCount > 0) {
                         reject();
                     } else {
-                        console.log(clc.green('JSCS results are good!'));
+                        console.log(clc.green('\nJSCS results are good!\n'));
 
                         resolve();
                     }
+
+                    console.log('');
                 });
             });
         }

@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.1.0
+**Fixed issues:**
+- Fixed the ENOENT error message from bueno-jscs.
+
+**Implemented enhancements:**
+- Ignore all spec files inside node_modules folders.
+- Added a main file which exposes all main dependencies for use in your specs.
+- Added more consistent feedback logs.
+
 ## 1.0.4
 **Fixed issues:**
 - Log all errors from the mocha instance and exit the process if needed.

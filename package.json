@@ -1,6 +1,6 @@
 {
   "name": "@reduct/build-tools",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
     "test": "npm run jscs && npm run eslint && npm run babel",
@@ -40,11 +40,14 @@
   "bin": {
     "reduct": "Dist/Bin/Reduct.js"
   },
+  "main": "Index.js",
   "dependencies": {
     "babel": "^5.8.5",
     "buenos-jscs": "^0.1.4",
+    "chai": "^3.2.0",
     "cli-color": "^1.0.0",
     "eslint": "^0.24.1",
+    "jsdom": "^5.6.1",
     "mocha": "^2.2.5",
     "uglify-files": "^0.1.1"
   },
