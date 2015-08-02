@@ -33,11 +33,33 @@ function umdify (packageName, code) {
 }
 
 function addBanner (code) {
-    var version = metaData.version;
-    var banner = `/* ${metaData.packageName} ${version.major}.${version.minor}.${version.patch} | @license ${metaData.licenseType} */
+    const version = metaData.version;
+    const contributors = metaData.contributors;
+    let contributorCommentList = '';
+    let banneredCode;
+    let banner;
+
+    contributors.forEach((contributor, index) => {
+        if (index !== 0) {
+            contributorCommentList += '\n * ';
+        }
+
+        contributorCommentList += `@author ${contributor.name} <${contributor.name}>`;
+    });
+
+    banner = `/**
+ *
+ * @name ${metaData.packageName}
+ * @version ${version.major}.${version.minor}.${version.patch}
+ * @license ${metaData.licenseType}
+ *
+ * ${contributorCommentList}
+ *
+ */
 
 `;
-    var banneredCode = banner + code;
+    console.log(banner)
+    banneredCode = banner + code;
 
     return Promise.resolve(banneredCode);
 }
