@@ -58,7 +58,7 @@ function addBanner (code) {
  */
 
 `;
-    console.log(banner)
+
     banneredCode = banner + code;
 
     return Promise.resolve(banneredCode);

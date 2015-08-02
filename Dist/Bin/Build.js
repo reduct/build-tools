@@ -49,7 +49,7 @@ function addBanner(code) {
     });
 
     banner = '/**\n *\n * @name ' + metaData.packageName + '\n * @version ' + version.major + '.' + version.minor + '.' + version.patch + '\n * @license ' + metaData.licenseType + '\n *\n * ' + contributorCommentList + '\n *\n */\n\n';
-    console.log(banner);
+
     banneredCode = banner + code;
 
     return Promise.resolve(banneredCode);
