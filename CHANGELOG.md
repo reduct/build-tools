@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.2.0
+**Fixed issues:**
+- Fixed a global scope issue with the UMD wrapper while running the built script in Node.
+
+**Implemented enhancements:**
+- Improved the file-header resulting from the build-task.
+
 ## 1.1.0
 **Fixed issues:**
 - Fixed the ENOENT error message from bueno-jscs.
