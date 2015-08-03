@@ -45,7 +45,7 @@ function addBanner(code) {
             contributorCommentList += '\n * ';
         }
 
-        contributorCommentList += '@author ' + contributor.name + ' <' + contributor.name + '>';
+        contributorCommentList += '@author ' + contributor.name + ' <' + contributor.email + '>';
     });
 
     banner = '/**\n *\n * @name ' + metaData.packageName + '\n * @version ' + version.major + '.' + version.minor + '.' + version.patch + '\n * @license ' + metaData.licenseType + '\n *\n * ' + contributorCommentList + '\n *\n */\n\n';
