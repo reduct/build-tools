@@ -8,6 +8,13 @@ var getFileContents = require('./../Utilities/GetFileContents.js');
 var writeFile = require('./../Utilities/WriteFile.js');
 var metaData = require('./../Utilities/MetaData.js');
 
+/**
+ * Transpiles the code string argument with babel.
+ *
+ * @param code {String} The code to transpile.
+ * @returns {Promise}
+ *
+ */
 function transpileWithBabel (code) {
     return new Promise((resolve, reject) => {
         var result = babel.transform(code);
@@ -20,6 +27,14 @@ function transpileWithBabel (code) {
     });
 }
 
+/**
+ * Adds a UMD wrapper around the code to expose it for all package systems.
+ *
+ * @param packageName {String} The global package name under which the package will be saved under.
+ * @param code {String} The code of the factory function which gets wrapped.
+ * @returns {Promise}
+ *
+ */
 function umdify (packageName, code) {
     return new Promise((resolve, reject) => {
         var umdWrapperInstance = new UMDWrapper(packageName, code, metaData.version);
@@ -32,6 +47,12 @@ function umdify (packageName, code) {
     });
 }
 
+/**
+ * Adds a file-banner to the code with detailed meta data about the package.
+ *
+ * @param code {String} the code which will be prepended after the file banner.
+ * @returns {Promise}
+ */
 function addBanner (code) {
     const version = metaData.version;
     const contributors = metaData.contributors;
@@ -64,6 +85,12 @@ function addBanner (code) {
     return Promise.resolve(banneredCode);
 }
 
+/**
+ * Creates a uglyfied version of the file described in the arguments.
+ *
+ * @param filePath {String} The path to the file which should get a duplicate uglyfied version.
+ * @returns {Promise}
+ */
 function uglifyFile (filePath) {
     var sourceFile = filePath;
     var targetFile = filePath.replace('.js', '.min.js');

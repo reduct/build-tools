@@ -5,6 +5,14 @@ var _createClass = (function () { function defineProperties(target, props) { for
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var UMDWrapper = (function () {
+    /**
+     * Instantiates a UMDWrapper for the given factory.
+     *
+     * @param globalPackageName {String} The global package name under which the package will be saved under.
+     * @param factoryFunction {String} The code of the factory function which gets wrapped.
+     * @param versionObject {Object} The semver oriented version object of the package.
+     */
+
     function UMDWrapper(globalPackageName, factoryFunction, versionObject) {
         _classCallCheck(this, UMDWrapper);
 
@@ -12,6 +20,12 @@ var UMDWrapper = (function () {
         this.factoryFunction = factoryFunction;
         this.versionObject = versionObject;
     }
+
+    /**
+     * Returns the wrapped code.
+     *
+     * @returns {Promise}
+     */
 
     _createClass(UMDWrapper, [{
         key: "getWrappedCode",

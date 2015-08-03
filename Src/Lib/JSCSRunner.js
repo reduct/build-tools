@@ -3,11 +3,21 @@ var clc = require('cli-color');
 var cwd = process.cwd();
 
 class JSCSRunner {
+    /**
+     * Instantiates a runner of Buenos-JSCS on the given path.
+     *
+     * @param path {String} The path on which JSCS will be applied on.
+     */
     constructor(path) {
         this.path = path + '**/*.js';
         this.runner = null;
     }
 
+    /**
+     * Kicks of the linting process and logs all errors/warning to the console.
+     *
+     * @returns {Promise}
+     */
     lint() {
         this.runner = new JSCS({
             src: [this.path],
@@ -46,6 +56,12 @@ class JSCSRunner {
         });
     }
 
+    /**
+     * Splits up the result of one file.
+     *
+     * @param fileName {String} The name of the current file result.
+     * @param result {Object} THe object containing the results of the file.
+     */
     logResultForFile(fileName, result) {
         if (result.errorCount) {
             console.log(clc.underline(fileName));
@@ -54,8 +70,14 @@ class JSCSRunner {
         }
     }
 
+    /**
+     * Logs a violation of a file.
+     *
+     * @param violation {Object} The violation object containing the details.
+     */
     logViolation(violation) {
         let prelude = clc.red('Style violation on line ' + violation.line + ' column ' + violation.column + ':');
+
         console.log(prelude, violation.rule + ' ' + violation.message);
     }
 }

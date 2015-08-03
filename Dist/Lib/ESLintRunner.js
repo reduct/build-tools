@@ -10,6 +10,12 @@ var ESLintCLI = eslint.CLIEngine;
 var cwd = process.cwd();
 
 var ESLintRunner = (function () {
+    /**
+     * Instantiates a runner of the ESLint CLI on the given path.
+     *
+     * @param path {String} The path on which ESLint will be applied on.
+     */
+
     function ESLintRunner(path) {
         _classCallCheck(this, ESLintRunner);
 
@@ -21,6 +27,12 @@ var ESLintRunner = (function () {
         });
         this.report = this.runner.executeOnFiles([path]);
     }
+
+    /**
+     * Kicks of the linting process and logs all errors/warning to the console.
+     *
+     * @returns {Promise}
+     */
 
     _createClass(ESLintRunner, [{
         key: 'lint',
@@ -55,6 +67,12 @@ var ESLintRunner = (function () {
                 }
             });
         }
+
+        /**
+         * Splits up the result of one file.
+         *
+         * @param result {Object} THe object containing the results of the file.
+         */
     }, {
         key: 'logResultForFile',
         value: function logResultForFile(result) {
@@ -62,6 +80,12 @@ var ESLintRunner = (function () {
 
             result.messages.forEach(this.logViolation.bind(this));
         }
+
+        /**
+         * Logs a violation of a file.
+         *
+         * @param violation {Object} The violation object containing the details.
+         */
     }, {
         key: 'logViolation',
         value: function logViolation(violation) {

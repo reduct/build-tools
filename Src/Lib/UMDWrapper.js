@@ -1,10 +1,22 @@
 class UMDWrapper {
+    /**
+     * Instantiates a UMDWrapper for the given factory.
+     *
+     * @param globalPackageName {String} The global package name under which the package will be saved under.
+     * @param factoryFunction {String} The code of the factory function which gets wrapped.
+     * @param versionObject {Object} The semver oriented version object of the package.
+     */
     constructor(globalPackageName, factoryFunction, versionObject) {
         this.globalPackageName = globalPackageName;
         this.factoryFunction = factoryFunction;
         this.versionObject = versionObject;
     }
 
+    /**
+     * Returns the wrapped code.
+     *
+     * @returns {Promise}
+     */
     getWrappedCode() {
         var globalPackageName = this.globalPackageName;
         var factoryFunction = this.factoryFunction;

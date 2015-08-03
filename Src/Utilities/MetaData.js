@@ -7,6 +7,28 @@ var requiredKeyValuePairs = [
     'coverageReportFile'
 ];
 
+/**
+ * Acts as a centralised model containing all information about the target package.
+ *
+ * @returns {{
+ *  packageName: String,
+ *  version: {
+ *      major: Number,
+ *      minor: Number,
+ *      patch: Number
+ *  },
+ *  licenseType: String,
+ *  contributors: (Array),
+ *  paths: {
+ *      src: String,
+ *      dist: String
+ *  },
+ *  entryFile: String,
+ *  globalPackageName: String,
+ *  coverageReportFile: String
+ * }}
+ * @constructor
+ */
 function GetMetaData () {
     var cwd = process.cwd();
     var metaData = require(cwd + '/package.json');
