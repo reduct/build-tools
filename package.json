@@ -46,7 +46,7 @@
     "buenos-jscs": "^0.1.4",
     "chai": "^3.2.0",
     "cli-color": "^1.0.0",
-    "eslint": "^0.24.1",
+    "eslint": "^1.0.0",
     "jsdom": "^5.6.1",
     "mocha": "^2.2.5",
     "uglify-files": "^0.1.1"
