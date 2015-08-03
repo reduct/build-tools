@@ -21,26 +21,26 @@ var version = {
     minor: ${versionObject.minor},
     patch: ${versionObject.patch}
 };
-var global;
+var world;
 
 if (typeof window !== "undefined") {
-    global = window;
+    world = window;
 } else if (typeof global !== "undefined") {
-    global = global;
+    world = global;
 } else if (typeof self !== "undefined") {
-    global = self;
+    world = self;
 } else {
-    global = this;
+    world = this;
 }
 
 if (typeof exports === "object" && typeof module !== "undefined") {
-    module.exports = factory(global, version);
+    module.exports = factory(world, version);
 } else if (typeof define === "function" && define.amd) {
     define([], function() {
-        return factory(global, version);
+        return factory(world, version);
     });
 } else {
-    global.${globalPackageName} = factory(global, version);
+    world.${globalPackageName} = factory(world, version);
 }
 })(${factoryFunction});
                 `);
