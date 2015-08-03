@@ -1,12 +1,17 @@
 # Change Log
 
+## 1.2.3
+**Implemented enhancements:**
+- Print out the contributor email-addresses only if they are present.
+- Added a type fallback for the contributors array.
+
 ## 1.2.2
 **Implemented enhancements:**
 - Switched the order of the build and test task while running the default task.
 
 ## 1.2.1
 **Fixed issues:**
-- Fixed the output of author email-addresses in the file-header.
+- Fixed the output of contributor email-addresses in the file-header.
 
 ## 1.2.0
 **Fixed issues:**

@@ -44,7 +44,7 @@ function addBanner (code) {
             contributorCommentList += '\n * ';
         }
 
-        contributorCommentList += `@author ${contributor.name} <${contributor.email}>`;
+        contributorCommentList += `@author ${contributor.name}${contributor.email ? ` <${contributor.email}` : '>' }`;
     });
 
     banner = `/**

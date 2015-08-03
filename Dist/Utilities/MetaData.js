@@ -31,7 +31,7 @@ function GetMetaData() {
             patch: versionArray[2]
         },
         licenseType: metaData.license.type,
-        contributors: metaData.contributors,
+        contributors: metaData.contributors || [],
         paths: {
             src: config.sourceFolder,
             dist: config.distributionFolder
