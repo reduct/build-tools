@@ -48,9 +48,9 @@ switch (taskType) {
 
     default:
         lint().then(() => {
-            return test();
-        }).then(() => {
             return build();
+        }).then(() => {
+            return test();
         }).catch(onError);
 
         break;
