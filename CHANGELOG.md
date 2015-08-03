@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.1
+**Fixed issues:**
+- Fixed the output of author email-addresses in the file-header.
+
 ## 1.2.0
 **Fixed issues:**
 - Fixed a global scope issue with the UMD wrapper while running the built script in Node.
