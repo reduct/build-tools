@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.0
+**Implemented enhancements:**
+- Added a helper utility for creating DOM mocks with `jsdom` (Exposed as `mock` in the `Index.js` file).
+- Added `chai-spies` as a central dependency. (Exposed as `spies` in the `Index.js` file).
+- Updated to ESLint 1.0.0 and removed all deprecated rules.
+
 ## 1.2.4
 **Implemented enhancements:**
 - Removed an unnecessary closing bracket in the contributor email-addresses print out.
@@ -26,10 +32,10 @@
 
 ## 1.1.0
 **Fixed issues:**
-- Fixed the ENOENT error message from bueno-jscs.
+- Fixed the `ENOENT` error message from bueno-jscs.
 
 **Implemented enhancements:**
-- Ignore all spec files inside node_modules folders.
+- Ignore all spec files inside `node_modules` folders.
 - Added a main file which exposes all main dependencies for use in your specs.
 - Added more consistent feedback logs.
 
