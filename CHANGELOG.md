@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.4
+**Implemented enhancements:**
+- Removed an unnecessary closing bracket in the contributor email-addresses print out.
+
 ## 1.2.3
 **Implemented enhancements:**
 - Print out the contributor email-addresses only if they are present.
