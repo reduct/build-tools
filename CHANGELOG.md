@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.4.0
+**Implemented enhancements:**
+- The `publish-coverage` task now creates the .lcov file automatically.
+- The global `window.reduct` object is now initialized in the UMD-Wrapper.
+- Implemented the isTestingEnv variable.
+
 ## 1.3.0
 **Implemented enhancements:**
 - Added a helper utility for creating DOM mocks with `jsdom` (Exposed as `mock` in the `Index.js` file).

@@ -2,25 +2,33 @@
 'use strict';
 
 var exec = require('child_process').exec;
-var clc = require('cli-color');
-var metaData = require('./../Utilities/MetaData.js');
+
+function publishCoverage() {
+    return new Promise(function (resolve, reject) {
+        exec('cat coverage/coverage.lcov | codeclimate', function (err) {
+            if (err) {
+                throw err;
+            }
+
+            resolve();
+        });
+    });
+}
+
+function createCoverage() {
+    return new Promise(function (resolve, reject) {
+        exec('node_modules/@reduct/build-tools/test.sh', function (err) {
+            if (err) {
+                throw err;
+            }
+
+            resolve();
+        });
+    });
+}
 
 module.exports = function () {
-    var filePath = metaData.coverageReportFile;
-
-    return new Promise(function (resolve, reject) {
-        if (filePath) {
-            exec('cat ' + filePath + ' | codeclimate', function (err) {
-                if (err) {
-                    throw err;
-                }
-
-                resolve();
-            });
-        } else {
-            console.log(clc.yellow('Please specify a valid path to a coverage file in your package.json.'));
-
-            reject();
-        }
+    return createCoverage().then(function () {
+        return publishCoverage();
     });
 };
