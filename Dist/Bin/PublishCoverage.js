@@ -7,7 +7,7 @@ var executablePath = 'node_modules/@reduct/build-tools/CreateCoverage.sh';
 
 function publishCoverage() {
     return new Promise(function (resolve, reject) {
-        exec('codeclimate-test-reporter < coverage/coverage.lcov', function (err) {
+        exec('codeclimate-test-reporter < coverage.lcov', function (err) {
             if (err) {
                 throw err;
             }
