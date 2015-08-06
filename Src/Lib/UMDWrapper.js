@@ -36,18 +36,23 @@ var opts = {
         patch: ${versionObject.patch}
     }
 };
-var world;
+var world = this;
 
+// Check for globals.
 if (typeof window !== "undefined") {
     world = window;
 } else if (typeof global !== "undefined") {
     world = global;
 } else if (typeof self !== "undefined") {
     world = self;
-} else {
-    world = this;
 }
 
+// Initiate the global reduct object if necessary.
+if(!world.reduct) {
+    world.reduct = {};
+}
+
+// Export the factory with the global and options to all module formats.
 if (typeof exports === "object" && typeof module !== "undefined") {
     module.exports = factory(world, opts);
 } else if (typeof define === "function" && define.amd) {
@@ -55,7 +60,7 @@ if (typeof exports === "object" && typeof module !== "undefined") {
         return factory(world, opts);
     });
 } else {
-    world.${globalPackageName} = factory(world, opts);
+    world.reduct.${globalPackageName} = factory(world, opts);
 }
 })(${factoryFunction});
                 `);
