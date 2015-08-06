@@ -59,8 +59,7 @@ function GetMetaData() {
             dist: config.distributionFolder
         },
         entryFile: config.entryFile,
-        globalPackageName: config.globalPackageName,
-        coverageReportFile: config.coverageReportFile
+        globalPackageName: config.globalPackageName
     };
 
     return this.data;
