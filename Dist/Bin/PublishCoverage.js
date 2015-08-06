@@ -2,6 +2,8 @@
 'use strict';
 
 var exec = require('child_process').exec;
+var fs = require('fs');
+var executablePath = 'node_modules/@reduct/build-tools/CreateCoverage.sh';
 
 function publishCoverage() {
     return new Promise(function (resolve, reject) {
@@ -17,7 +19,7 @@ function publishCoverage() {
 
 function createCoverage() {
     return new Promise(function (resolve, reject) {
-        exec('node_modules/@reduct/build-tools/test.sh', function (err) {
+        exec(executablePath, function (err) {
             if (err) {
                 throw err;
             }
@@ -28,6 +30,9 @@ function createCoverage() {
 }
 
 module.exports = function () {
+    // Make sure that the file permissions for the executable are valid.
+    fs.chmodSync(executablePath, '755');
+
     return createCoverage().then(function () {
         return publishCoverage();
     });

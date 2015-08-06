@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.1
+**Fixed issues:**
+- Fixed the file permissions for the createCoverage executable.
+
 ## 1.4.0
 **Implemented enhancements:**
 - The `publish-coverage` task now creates the .lcov file automatically.
