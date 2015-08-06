@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.2
+**Fixed issues:**
+- Fixed the reference to the old codeclimate cli.
+
 ## 1.4.1
 **Fixed issues:**
 - Fixed the file permissions for the createCoverage executable.
