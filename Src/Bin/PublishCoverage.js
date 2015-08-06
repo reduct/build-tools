@@ -1,25 +1,33 @@
 #! /usr/bin/env node
 
 var exec = require('child_process').exec;
-var clc = require('cli-color');
-var metaData = require('./../Utilities/MetaData.js');
+
+function publishCoverage () {
+    return new Promise((resolve, reject) => {
+        exec('cat coverage/coverage.lcov | codeclimate', (err) => {
+            if (err) {
+                throw err;
+            }
+
+            resolve();
+        });
+    });
+}
+
+function createCoverage () {
+    return new Promise((resolve, reject) => {
+        exec('node_modules/@reduct/build-tools/test.sh', (err) => {
+            if (err) {
+                throw err;
+            }
+
+            resolve();
+        });
+    });
+}
 
 module.exports = () => {
-    var filePath = metaData.coverageReportFile;
-
-    return new Promise((resolve, reject) => {
-        if (filePath) {
-            exec('cat ' + filePath + ' | codeclimate', (err) => {
-                if (err) {
-                    throw err;
-                }
-
-                resolve();
-            });
-        } else {
-            console.log(clc.yellow('Please specify a valid path to a coverage file in your package.json.'));
-
-            reject();
-        }
+    return createCoverage().then(() => {
+        return publishCoverage();
     });
 };
