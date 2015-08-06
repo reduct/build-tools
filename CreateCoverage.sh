@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 # Remove previous folders.
-rm -rf coverage
 rm -rf Tests-cov
-
-# Create the new target folder for the lcov file.
-mkdir coverage
 
 # Instrument the test sources with JSCover.
 node_modules/@reduct/build-tools/node_modules/.bin/jscover Tests Tests-cov
