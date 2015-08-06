@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.4
+**Fixed issues:**
+- Removed the unused `coverageReportFile` option
+
 ## 1.4.3
 **Fixed issues:**
 - Adjusted the target location for the coverage results file.
