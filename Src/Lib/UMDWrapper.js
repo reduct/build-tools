@@ -28,10 +28,13 @@ class UMDWrapper {
             } else {
                 resolve(`
 (function (factory) {
-var version = {
-    major: ${versionObject.major},
-    minor: ${versionObject.minor},
-    patch: ${versionObject.patch}
+var opts = {
+    isTestingEnv: process && process.title && !!~process.title.indexOf('reduct'),
+    packageVersion: {
+        major: ${versionObject.major},
+        minor: ${versionObject.minor},
+        patch: ${versionObject.patch}
+    }
 };
 var world;
 
@@ -46,13 +49,13 @@ if (typeof window !== "undefined") {
 }
 
 if (typeof exports === "object" && typeof module !== "undefined") {
-    module.exports = factory(world, version);
+    module.exports = factory(world, opts);
 } else if (typeof define === "function" && define.amd) {
     define([], function() {
-        return factory(world, version);
+        return factory(world, opts);
     });
 } else {
-    world.${globalPackageName} = factory(world, version);
+    world.${globalPackageName} = factory(world, opts);
 }
 })(${factoryFunction});
                 `);
