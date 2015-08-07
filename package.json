@@ -49,7 +49,7 @@
     "cli-color": "^1.0.0",
     "eslint": "^1.0.0",
     "jscover": "^1.0.0",
-    "jsdom": "^5.6.1",
+    "jsdom": "^6.0.0",
     "mocha": "^2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "uglify-files": "^0.1.1"
