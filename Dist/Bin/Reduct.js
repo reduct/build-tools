@@ -1,14 +1,14 @@
 #! /usr/bin/env node
 'use strict';
 
-require('babel/polyfill');
-
 var publishCoverage = require('./PublishCoverage.js');
 var build = require('./Build.js');
 var lint = require('./Lint.js');
 var test = require('./Test.js');
 var userArgs = process.argv.slice(2);
 var taskType = userArgs[0];
+
+require('babel/polyfill');
 
 // Define a custom process title for additional behavior in tests etc.
 process.title = 'reduct';

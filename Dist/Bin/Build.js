@@ -4,10 +4,11 @@
 var babel = require('babel');
 var uglify = require('uglify-files');
 var clc = require('cli-color');
-var UMDWrapper = require('./../Lib/UMDWrapper.js');
 var getFileContents = require('./../Utilities/GetFileContents.js');
 var writeFile = require('./../Utilities/WriteFile.js');
 var metaData = require('./../Utilities/MetaData.js');
+
+var NAMESPACE_PREFIX = 'reduct';
 
 /**
  * Transpiles the code string argument with babel.
@@ -16,35 +17,18 @@ var metaData = require('./../Utilities/MetaData.js');
  * @returns {Promise}
  *
  */
-function transpileWithBabel(code) {
+function transpileWithBabel(code, globalPackageName) {
     return new Promise(function (resolve, reject) {
-        var result = babel.transform(code);
+        var result = babel.transform(code, {
+            modules: 'umd',
+            moduleId: NAMESPACE_PREFIX + '.' + globalPackageName
+        });
 
         if (result.code) {
             resolve(result.code);
         } else {
             reject();
         }
-    });
-}
-
-/**
- * Adds a UMD wrapper around the code to expose it for all package systems.
- *
- * @param packageName {String} The global package name under which the package will be saved under.
- * @param code {String} The code of the factory function which gets wrapped.
- * @returns {Promise}
- *
- */
-function umdify(packageName, code) {
-    return new Promise(function (resolve, reject) {
-        var umdWrapperInstance = new UMDWrapper(packageName, code, metaData.version);
-
-        umdWrapperInstance.getWrappedCode().then(function (umdCode) {
-            resolve(umdCode);
-        })['catch'](function () {
-            reject();
-        });
     });
 }
 
@@ -106,13 +90,9 @@ module.exports = function () {
     console.log(clc.underline('Building the source files...'));
 
     return getFileContents(srcPath + fileName).then(function (code) {
-        console.log('Wrapping the UMD IIFE around the source file...');
-
-        return umdify(globalPackageName, code);
-    }).then(function (code) {
         console.log('Transpiling the source code with babel...');
 
-        return transpileWithBabel(code);
+        return transpileWithBabel(code, globalPackageName);
     }).then(function (code) {
         console.log('Adding the meta data file banner with...');
 
