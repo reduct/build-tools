@@ -4,9 +4,13 @@ var mock = '<html><head></head><body></body></html>';
 module.exports = {
     defaultMock: mock,
 
-    create: (mock, callback) => {
-        jsdom.env(mock, {
+    create: (mocksnippet, callback) => {
+        jsdom.env(mocksnippet, {
             done: (err, window) => {
+                if (err) {
+                    return console.error(err);
+                }
+
                 global.window = window;
                 global.document = window.document;
 
