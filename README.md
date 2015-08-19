@@ -23,8 +23,7 @@ After installing the package properly, you can add your configuration to your pa
     "sourceFolder": "Src/",
     "distributionFolder": "Dist/",
     "entryFile": "Component.js",
-    "globalPackageName": "reductComponent",
-    "coverageReportFile": "lcov.info"
+    "globalPackageName": "reductComponent"
   }
 }
 ```

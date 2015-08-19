@@ -1,46 +1,52 @@
 #! /usr/bin/env node
 'use strict';
 
-var babel = require('babel');
+var babelify = require('babelify');
+var browserify = require('browserify');
 var uglify = require('uglify-files');
 var clc = require('cli-color');
-var UMDWrapper = require('./../Lib/UMDWrapper.js');
+var IIFEWrapper = require('./../Lib/IIFEWrapper.js');
 var getFileContents = require('./../Utilities/GetFileContents.js');
 var writeFile = require('./../Utilities/WriteFile.js');
 var metaData = require('./../Utilities/MetaData.js');
 
 /**
- * Transpiles the code string argument with babel.
+ * Bundles all dependencies via browserify and transforms the code from ESXXX to ES3 via babelify.
  *
- * @param code {String} The code to transpile.
+ * @param opts {Object} Contains the path to the entry file and the global package name.
  * @returns {Promise}
  *
  */
-function transpileWithBabel(code) {
-    return new Promise(function (resolve, reject) {
-        var result = babel.transform(code, {
-            stage: 0
-        });
+function bundleDependencies(opts) {
+    var b = browserify(opts.entry, {
+        standalone: opts.globalPackageName
+    });
 
-        if (result.code) {
-            resolve(result.code);
-        } else {
-            reject();
-        }
+    b.transform(babelify, {
+        stage: 0
+    });
+
+    return new Promise(function (resolve, reject) {
+        b.bundle(function (err, buffer) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(buffer.toString('utf8'));
+            }
+        });
     });
 }
 
 /**
  * Adds a UMD wrapper around the code to expose it for all package systems.
  *
- * @param packageName {String} The global package name under which the package will be saved under.
  * @param code {String} The code of the factory function which gets wrapped.
  * @returns {Promise}
  *
  */
-function umdify(packageName, code) {
+function iifeify(code) {
     return new Promise(function (resolve, reject) {
-        var umdWrapperInstance = new UMDWrapper(packageName, code, metaData.version);
+        var umdWrapperInstance = new IIFEWrapper(code, metaData.version);
 
         umdWrapperInstance.getWrappedCode().then(function (umdCode) {
             resolve(umdCode);
@@ -107,14 +113,14 @@ module.exports = function () {
 
     console.log(clc.underline('Building the source files...'));
 
-    return getFileContents(srcPath + fileName).then(function (code) {
-        console.log('Wrapping the UMD IIFE around the source file...');
-
-        return umdify(globalPackageName, code);
+    console.log('Bundling all dependencies via browserify...');
+    return bundleDependencies({
+        entry: srcPath + fileName,
+        globalPackageName: globalPackageName
     }).then(function (code) {
-        console.log('Transpiling the source code with babel...');
+        console.log('Wrapping the IIFE around the bundled source file...');
 
-        return transpileWithBabel(code);
+        return iifeify(code);
     }).then(function (code) {
         console.log('Adding the meta data file banner with...');
 
