@@ -47,11 +47,6 @@ class IIFEWrapper {
     // Execute the isTestingEnv check.
     reductOpts.isTestingEnv = world.process && world.process.title && !!~world.process.title.indexOf('reduct');
 
-    // Initiate the global reduct object if necessary.
-    if(!world.reduct) {
-        world.reduct = {};
-    }
-
     return ${factoryFunction}
 }());
                 `);
