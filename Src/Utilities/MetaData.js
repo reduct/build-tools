@@ -3,8 +3,7 @@ var requiredKeyValuePairs = [
     'sourceFolder',
     'distributionFolder',
     'entryFile',
-    'globalPackageName',
-    'coverageReportFile'
+    'globalPackageName'
 ];
 
 /**
@@ -63,7 +62,8 @@ function GetMetaData () {
             dist: config.distributionFolder
         },
         entryFile: config.entryFile,
-        globalPackageName: config.globalPackageName
+        globalPackageName: config.globalPackageName,
+        coverageReportFile: config.coverageReportFile
     };
 
     return this.data;

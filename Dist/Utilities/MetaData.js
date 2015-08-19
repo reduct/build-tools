@@ -1,7 +1,7 @@
 'use strict';
 
 var singleton = null;
-var requiredKeyValuePairs = ['sourceFolder', 'distributionFolder', 'entryFile', 'globalPackageName', 'coverageReportFile'];
+var requiredKeyValuePairs = ['sourceFolder', 'distributionFolder', 'entryFile', 'globalPackageName'];
 
 /**
  * Acts as a centralised model containing all information about the target package.
@@ -59,7 +59,8 @@ function GetMetaData() {
             dist: config.distributionFolder
         },
         entryFile: config.entryFile,
-        globalPackageName: config.globalPackageName
+        globalPackageName: config.globalPackageName,
+        coverageReportFile: config.coverageReportFile
     };
 
     return this.data;

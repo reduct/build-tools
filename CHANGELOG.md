@@ -1,8 +1,16 @@
 # Change Log
 
+## 1.4.6
+**Implemented enhancements:**
+- Set the babel stage to level 0 to allow proposals.
+
+## 1.4.5
+**Fixed issues:**
+- Removed the 'coverageReportFile' option from the required metaData keys.
+
 ## 1.4.4
 **Fixed issues:**
-- Removed the unused `coverageReportFile` option
+- Removed the unused `coverageReportFile` option.
 
 ## 1.4.3
 **Fixed issues:**
