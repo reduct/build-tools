@@ -18,7 +18,9 @@ var metaData = require('./../Utilities/MetaData.js');
  */
 function transpileWithBabel(code) {
     return new Promise(function (resolve, reject) {
-        var result = babel.transform(code);
+        var result = babel.transform(code, {
+            stage: 0
+        });
 
         if (result.code) {
             resolve(result.code);
