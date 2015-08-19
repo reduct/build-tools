@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.1
+**Fixed issues:**
+- Set the babelify package as a peerDependency to remove errors while installing as sub-sub-dependency.
+
 ## 1.5.0
 **Implemented enhancements:**
 - Integrated browserify as a dependency bundler.
