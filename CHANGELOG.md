@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.5
+**Implemented enhancements:**
+- A custom reductRequire namespace for the derequire package will now be used.
+
 ## 1.5.4
 **Fixed issues:**
 - Fixed the install process of 'derequire' as a sub-package.
