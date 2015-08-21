@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.4
+**Fixed issues:**
+- Fixed the install process of 'derequire' as a sub-package.
+
 ## 1.5.3
 **Implemented enhancements:**
 - Added 'derequire' to the build step to reduce conflicts with existing require instances.
