@@ -3,6 +3,7 @@
 
 var babelify = require('babelify');
 var browserify = require('browserify');
+var derequire = require('derequire');
 var uglify = require('uglify-files');
 var clc = require('cli-color');
 var IIFEWrapper = require('./../Lib/IIFEWrapper.js');
@@ -35,6 +36,22 @@ function bundleDependencies(opts) {
             }
         });
     });
+}
+
+/**
+ * Replaces all instances of the require() statement to _dereq_().
+ *
+ * @param code {String} The string to derequire.
+ * @returns {Promise}
+ *
+ */
+function derequireCode(code) {
+    var transformedCode = derequire(code, [{
+        from: 'require',
+        to: '_dereq_'
+    }]);
+
+    return Promise.resolve(transformedCode);
 }
 
 /**
@@ -117,6 +134,10 @@ module.exports = function () {
     return bundleDependencies({
         entry: srcPath + fileName,
         globalPackageName: globalPackageName
+    }).then(function (code) {
+        console.log('Replacing all instances of require() class with _dereq_()...');
+
+        return derequireCode(code);
     }).then(function (code) {
         console.log('Wrapping the IIFE around the bundled source file...');
 

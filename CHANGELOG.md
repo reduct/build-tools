@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.3
+**Implemented enhancements:**
+- Added 'derequire' to the build step to reduce conflicts with existing require instances.
+
 ## 1.5.2
 **Implemented enhancements:**
 - Removed the global reduct object initializer since it is useless since the move to the browserify UMD-Wrapper.
