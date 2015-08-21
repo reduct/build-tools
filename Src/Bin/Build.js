@@ -48,7 +48,7 @@ function derequireCode (code) {
     var transformedCode = derequire(code, [
         {
             from: 'require',
-            to: '_dereq_'
+            to: '_redReq'
         }
     ]);
 
