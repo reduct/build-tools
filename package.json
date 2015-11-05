@@ -1,6 +1,6 @@
 {
   "name": "@reduct/build-tools",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Shared configurations and build setup for all reduct repositories.",
   "scripts": {
     "test": "npm run jscs && npm run eslint && npm run babel",
@@ -43,8 +43,9 @@
   "main": "Index.js",
   "dependencies": {
     "babel": "^5.8.5",
-    "browserify": "^11.0.1",
-    "buenos-jscs": "^0.1.4",
+    "babelify": "^6.1.3",
+    "browserify": "^11.2.0",
+    "buenos-jscs": "^0.1.7",
     "chai": "^3.2.0",
     "chai-spies": "^0.7.0",
     "cli-color": "^1.0.0",
@@ -55,9 +56,6 @@
     "mocha": "^2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "uglify-files": "^0.1.1"
-  },
-  "peerDependencies": {
-    "babelify": "^6.1.3"
   },
   "devDependencies": {
     "jscs": "^2.0.0"

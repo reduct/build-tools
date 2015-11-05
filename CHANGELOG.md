@@ -1,12 +1,16 @@
 # Change Log
 
+## 1.5.6
+**Fixed issues:**
+- Install `babelify` as a regular dependency since peerDependencies are deprecated.
+
 ## 1.5.5
 **Implemented enhancements:**
-- A custom reductRequire namespace for the derequire package will now be used.
+- A custom reductRequire namespace for the `derequire` package will now be used.
 
 ## 1.5.4
 **Fixed issues:**
-- Fixed the install process of 'derequire' as a sub-package.
+- Fixed the install process of `derequire` as a sub-package.
 
 ## 1.5.3
 **Implemented enhancements:**
